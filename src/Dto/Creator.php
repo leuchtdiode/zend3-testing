@@ -66,9 +66,9 @@ abstract class Creator
 	 */
 	public function __call($name, $arguments)
 	{
-		$property = strtolower(
+		$property = lcfirst(
 			str_replace(
-				['is', 'get'],
+				'set',
 				'',
 				$name
 			)
@@ -86,7 +86,7 @@ abstract class Creator
 	{
 		$result = new CreationResult();
 
-		$data = array_merge_recursive(
+		$data = array_replace_recursive(
 			$this->getDefaultData(),
 			$this->data
 		);
