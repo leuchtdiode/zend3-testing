@@ -1,0 +1,33 @@
+{
+	"name": "leuchtdiode/zend3-testing",
+	"description": "Zend Framework 3 module for testing",
+	"type": "library",
+	"license": "MIT",
+	"homepage": "https://try2catch.com",
+	"authors": [
+		{
+			"name": "Alex Schloegl",
+			"email": "alex@try2catch.com",
+			"homepage": "https://try2catch.com",
+			"role": "Developer"
+		}
+	],
+	"keywords": [
+		"Zend Framework 3",
+		"Module",
+		"Testing"
+	],
+	"require": {
+		"php": ">=7.1",
+		"leuchtdiode/zend3-common": "^0.1"
+	},
+	"require-dev": {
+		"phpunit/phpunit": "^7.0",
+		"zendframework/zend-test": "^3.0"
+	},
+	"autoload": {
+		"psr-4": {
+			"Testing\\": "src/"
+		}
+	}
+}
