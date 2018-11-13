@@ -14,26 +14,27 @@ trait DynamicFixturesTrait
 	 */
 	private function createEmptyDb(): void
 	{
-		$db = __DIR__ . '/../../../../../data/testing/test.sqlite';
-
-		if (!file_exists($db))
-		{
-			touch($db);
-		}
-		else
-		{
-			unlink($db);
-		}
-
 		/** @var Application $app */
 		$app = $this->getApplication();
 
 		/** @var EntityManager $em */
 		$em = $app->getServiceManager()->get(EntityManager::class);
 
-		$metaData = $em->getMetadataFactory()->getAllMetadata();
-		$schema   = new SchemaTool($em);
-		$schema->createSchema($metaData);
+		$db      = __DIR__ . '/../../../../../data/testing/test.sqlite';
+		$emptyDb = __DIR__ . '/../../../../../data/testing/test-empty.sqlite';
+
+		if (!file_exists($emptyDb)) // TODO always create if something changed?
+		{
+			$metaData = $em->getMetadataFactory()->getAllMetadata();
+			$schema   = new SchemaTool($em);
+			$schema->createSchema($metaData);
+
+			copy($db, $emptyDb);
+		}
+		else
+		{
+			copy($emptyDb, $db);
+		}
 	}
 
 	/**
