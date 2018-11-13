@@ -14,7 +14,7 @@ trait DynamicFixturesTrait
 	 */
 	private function createEmptyDb(): void
 	{
-		$db = __DIR__ . '/../../../../data/testing/test.sqlite';
+		$db = __DIR__ . '/../../../../../data/testing/test.sqlite';
 
 		if (!file_exists($db))
 		{
