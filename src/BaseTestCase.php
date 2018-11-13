@@ -20,7 +20,7 @@ class BaseTestCase extends AbstractHttpControllerTestCase
 		$this->reset();
 
 		$this->setApplicationConfig(
-			include __DIR__ . '/../../../config/application.test.config.php'
+			include getcwd() . '/config/application.test.config.php'
 		);
 
 		Creator::setServiceManager(
